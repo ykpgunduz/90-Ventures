@@ -4,17 +4,21 @@ import { TeamItemDT } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 
-const TeamCard: React.FC<TeamItemDT> = ({ id, image, name, role, bio, social_links, animation }) => {
+const TeamCard: React.FC<TeamItemDT> = ({ id, image, name, role, bio, social_links, animation, objectPosition, objectFit, aspectRatio, transform, priority }) => {
     const defaultBio = `${name}, +90 Ventures bünyesinde ${role} alanında çalışmakta olup yeni nesil dijital ürünlerin strateji ve geliştirme süreçlerine liderlik etmektedir.`;
     const linkedinUrl = social_links?.linkedin || "#";
+
+    const imageAspectRatio = objectFit === "natural"
+        ? (aspectRatio || undefined)
+        : (aspectRatio || "362 / 420");
 
     return (
         <div className={`col-xxl-3 col-lg-4 col-md-6 col-sm-6 ${animation}`}>
             <div className="px-team-item mb-30">
                 <div className="px-team-thumb p-relative">
                     <div className="ripple-image">
-                        <Image className="img-fluid w-100" width={362} height={420} src={image} alt={name} style={{ objectFit: "cover", aspectRatio: "362 / 420" }} />
-                        
+                        <Image className="img-fluid w-100" width={362} height={420} src={image} alt={name} priority={priority} style={{ objectFit: objectFit === "natural" ? undefined : ((objectFit as any) || "cover"), objectPosition: objectPosition || "center", transform: transform || "none", ...(imageAspectRatio ? { aspectRatio: imageAspectRatio } : {}) }} />
+
                         {/* DARK OVERLAY ON HOVER */}
                         <div className="px-team-overlay">
                             <div className="px-team-overlay-inner text-start">
@@ -48,4 +52,4 @@ const TeamCard: React.FC<TeamItemDT> = ({ id, image, name, role, bio, social_lin
     );
 };
 
-export default TeamCard;
+export default TeamCard;

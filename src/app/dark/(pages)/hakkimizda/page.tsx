@@ -4,6 +4,14 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
     title: "Hakkımızda | İstanbul Merkezli Dijital Ürün Ajansı | +90 Ventures",
     description: "16+ yıllık deneyim ve 100+ tamamlanan projeyle +90 Ventures ekibini tanıyın.",
+    openGraph: {
+        title: "Hakkımızda | İstanbul Merkezli Dijital Ürün Ajansı | +90 Ventures",
+        description: "16+ yıllık deneyim ve 100+ tamamlanan projeyle +90 Ventures ekibini tanıyın.",
+        url: "https://90.ventures/hakkimizda",
+    },
+    alternates: {
+        canonical: "https://90.ventures/hakkimizda",
+    },
 };
 const page = () => {
     return (

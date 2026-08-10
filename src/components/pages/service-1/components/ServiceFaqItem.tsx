@@ -1,6 +1,3 @@
-import Link from "next/link";
-import { slugify } from "@/data/sub-services-data";
-
 interface ServiceFaqItemProps {
     id: number;
     title: string;
@@ -46,16 +43,6 @@ const ServiceFaqItem = ({
                             <li key={`${item}-${index}`}>{item}</li>
                         ))}
                     </ul>
-
-                    <div className="mt-3">
-                        <Link
-                            href={`/hizmetler/destekleyici-hizmetler/${slugify(title)}`}
-                            className="d-inline-flex align-items-center gap-2 text-decoration-underline fw-bold"
-                            style={{ color: "var(--tp-common-px-orange)", fontSize: "15px" }}
-                        >
-                            Hizmet Detayını İnceleyin →
-                        </Link>
-                    </div>
                 </div>
             </div>
         </div>

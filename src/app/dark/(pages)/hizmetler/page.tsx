@@ -9,6 +9,10 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Hizmetlerimiz | AI, Mobil, Web ve UI/UX | +90 Ventures",
         description: "AI dönüşümü, mobil/web uygulama geliştirme ve UI/UX tasarım hizmetlerimizle projenizi uçtan uca hayata geçiriyoruz.",
+        url: "https://90.ventures/hizmetler",
+    },
+    alternates: {
+        canonical: "https://90.ventures/hizmetler",
     },
 };
 const page = () => {

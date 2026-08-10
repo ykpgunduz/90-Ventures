@@ -266,7 +266,8 @@ export const team_members: TeamItemDT[] = [
         id: 9,
         name: "Yakup Gündüz",
         role: "Software & AI Developer",
-        image: "/assets/img/team/yakup-gunduz.jpeg",
+        image: "/assets/img/team/yakup-gunduz.png",
+        objectPosition: "bottom",
         animation: "px-fade-anim",
 
         bio: "Modern web teknolojileri ve yazılım geliştirme alanında uzmanlaşmış, performans odaklı çözümler üreten bir yazılım geliştiricisi.",
@@ -274,23 +275,23 @@ export const team_members: TeamItemDT[] = [
         location: "Istanbul, Turkey",
         email: "yakup@90.ventures",
         phone: "+90 216 000 0000",
-        age: 25,
+        age: 26,
         gender: "Male",
         qualification: "BSc in Computer Science",
-        experience_years: "4+ Years",
+        experience_years: "5+ Years",
         website: "https://90.ventures",
 
         social_links: {
-            linkedin: "https://www.linkedin.com/in/yakupgunduz",
+            linkedin: "https://www.linkedin.com/in/yakupgunduz/",
         },
 
         experiences: [
-            "Software Developer at +90 Ventures (2022 - Present)",
+            "Software & AI Developer at +90 Ventures (2022 - Present)",
         ],
 
         skills: [
-            { title: "Full-Stack Development", value: 93 },
-            { title: "Frontend Engineering", value: 91 },
+            { title: "Software Development", value: 95 },
+            { title: "AI Development", value: 92 },
         ],
     },
 ];

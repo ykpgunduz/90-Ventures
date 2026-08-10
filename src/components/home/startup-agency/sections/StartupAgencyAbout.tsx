@@ -34,12 +34,12 @@ const aboutStats = [
 ];
 
 const brandImages = [
-    { id: 1, img: "/assets/img/brand/clients/abdi-ibrahim.png", width: 150, height: 32 },
-    { id: 2, img: "/assets/img/brand/clients/abdi-ibrahim-otsuka.png", width: 170, height: 32 },
-    { id: 3, img: "/assets/img/brand/clients/puttikao-health.jpeg", width: 120, height: 32 },
-    { id: 4, img: "/assets/img/brand/clients/abdi-ibrahim.png", width: 150, height: 32 },
-    { id: 5, img: "/assets/img/brand/clients/abdi-ibrahim-otsuka.png", width: 170, height: 32 },
-    { id: 6, img: "/assets/img/brand/clients/puttikao-health.jpeg", width: 120, height: 32 },
+    { id: 1, img: "/assets/img/brand/clients/abdi-ibrahim.png", width: 225, height: 48 },
+    { id: 3, img: "/assets/img/brand/clients/puttikao-health.jpeg", width: 150, height: 57 },
+    { id: 7, img: "/assets/img/brand/clients/fokur-logo.png", width: 165, height: 42 },
+    { id: 8, img: "/assets/img/brand/clients/gent-logo.png", width: 135, height: 48 },
+    { id: 9, img: "/assets/img/brand/clients/goddess-logo.png", width: 180, height: 70 },
+    { id: 10, img: "/assets/img/brand/clients/obur-logo.png", width: 200, height: 75 },
 ];
 
 const StartupAgencyAbout = () => {
@@ -133,7 +133,7 @@ const StartupAgencyAbout = () => {
                                                                          <SwiperSlide key={brand.id} style={{ width: "auto", minWidth: "160px" }}>
                                                                              <div className="px-about-brand" style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "45px", padding: "0 10px" }}>
                                                                                  <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", height: "100%", width: "100%" }}>
-                                                                                     <Image width={brand.width} height={brand.height} style={{ width: "auto", height: "auto", maxHeight: "35px", objectFit: "contain" }} src={brand.img} alt="brand logo" />
+                                                                                     <Image width={brand.width} height={brand.height} style={{ width: "auto", height: "auto", maxWidth: `${brand.width}px`, maxHeight: `${brand.height}px`, objectFit: "contain" }} src={brand.img} alt="brand logo" />
                                                                                  </span>
                                                                              </div>
                                                                          </SwiperSlide>

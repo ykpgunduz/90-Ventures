@@ -24,6 +24,13 @@ const TeamDetailsMainContent = ({ id }: IdProps) => {
                                     {team?.image && <Image className="img-fluid" width={540} height={600}
                                         src={team?.image}
                                         alt={team?.name}
+                                        style={{
+                                            objectFit: team.objectFit === "natural" ? undefined : ((team.objectFit as any) || "cover"),
+                                            objectPosition: team.objectPosition || "center",
+                                            transform: team.transform || "none",
+                                            width: "100%",
+                                            height: "auto",
+                                        }}
                                     />}
                                 </div>
                             </div>

@@ -18,6 +18,11 @@ export interface TeamItemDT {
     image: string;
     name: string;
     role: string;
+    objectPosition?: string;
+    objectFit?: string;
+    aspectRatio?: string;
+    transform?: string;
+    priority?: boolean;
 
     // optional old field
     animation?: string;

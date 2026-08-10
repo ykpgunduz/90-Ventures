@@ -4,14 +4,20 @@ import { PlusIcon } from "@/svg";
 import Image from "next/image";
 
 const brandImages = [
-    { img: "/assets/img/brand/clients/abdi-ibrahim.png", width: 220, height: 50 },
-    { img: "/assets/img/brand/clients/abdi-ibrahim-otsuka.png", width: 240, height: 50 },
-    { img: "/assets/img/brand/clients/puttikao-health.jpeg", width: 180, height: 50 },
+    { img: "/assets/img/brand/clients/abdi-ibrahim.png", width: 300, height: 65 },
+    { img: "/assets/img/brand/clients/puttikao-health.jpeg", width: 190, height: 70 },
+    { img: "/assets/img/brand/clients/fokur-logo.png", width: 210, height: 55 },
+    { img: "/assets/img/brand/clients/gent-logo.png", width: 175, height: 65 },
+    { img: "/assets/img/brand/clients/goddess-logo.png", width: 230, height: 85 },
+    { img: "/assets/img/brand/clients/obur-logo.png", width: 250, height: 75 },
 ];
 const brandDarkImages = [
-    { img: "/assets/img/brand/clients/abdi-ibrahim.png", width: 220, height: 50 },
-    { img: "/assets/img/brand/clients/abdi-ibrahim-otsuka.png", width: 240, height: 50 },
-    { img: "/assets/img/brand/clients/puttikao-health.jpeg", width: 180, height: 50 },
+    { img: "/assets/img/brand/clients/abdi-ibrahim.png", width: 300, height: 65 },
+    { img: "/assets/img/brand/clients/puttikao-health.jpeg", width: 190, height: 70 },
+    { img: "/assets/img/brand/clients/fokur-logo.png", width: 210, height: 55 },
+    { img: "/assets/img/brand/clients/gent-logo.png", width: 175, height: 65 },
+    { img: "/assets/img/brand/clients/goddess-logo.png", width: 230, height: 85 },
+    { img: "/assets/img/brand/clients/obur-logo.png", width: 250, height: 75 },
 ];
 
 interface BrandProps {
@@ -53,7 +59,7 @@ const Brand = ({ paddingBottom = "pb-60" }: BrandProps) => {
                                     width={brand.width}
                                     height={brand.height}
                                     alt={`Brand ${index + 1}`}
-                                    style={{ width: "auto", height: "auto", maxHeight: "60px", maxWidth: "100%", objectFit: "contain" }}
+                                    style={{ width: "auto", height: "auto", maxWidth: `${brand.width}px`, maxHeight: `${brand.height}px`, objectFit: "contain" }}
                                 />
                             </div>
                         </div>
