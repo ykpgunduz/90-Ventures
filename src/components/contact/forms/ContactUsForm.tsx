@@ -1,9 +1,13 @@
 "use client";
 import { ContactUsFormValuesDt } from "@/types/contact-dt";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
+const WEB3FORMS_ACCESS_KEY = "5910d342-a628-4ed1-808a-a59faa9267bb";
+
 const ContactUsForm = () => {
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const {
         register,
         handleSubmit,
@@ -11,9 +15,39 @@ const ContactUsForm = () => {
         formState: { errors },
     } = useForm<ContactUsFormValuesDt>();
 
-    const onSubmit = () => {
-        toast.success("Mesajınız başarıyla gönderildi!");
-        reset();
+    const onSubmit = async (data: ContactUsFormValuesDt) => {
+        setIsSubmitting(true);
+        try {
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                body: JSON.stringify({
+                    access_key: WEB3FORMS_ACCESS_KEY,
+                    name: data.name,
+                    email: data.email,
+                    website: data.website || "",
+                    message: data.message,
+                    subject: `Yeni İletişim Formu: ${data.name}`,
+                    from_name: "+90 Ventures İletişim",
+                }),
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                toast.success("Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.");
+                reset();
+            } else {
+                toast.error("Mesaj gönderilemedi. Lütfen tekrar deneyin.");
+            }
+        } catch {
+            toast.error("Bir hata oluştu. Lütfen internet bağlantınızı kontrol edip tekrar deneyin.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -103,10 +137,20 @@ const ContactUsForm = () => {
                     </div>
 
                     <div className="tp-contact-form-btn">
-                        <button className="w-100" type="submit" aria-label="Send contact message">
+                        <button
+                            className="w-100"
+                            type="submit"
+                            disabled={isSubmitting}
+                            aria-label="Send contact message"
+                            style={isSubmitting ? { opacity: 0.7, cursor: "not-allowed" } : {}}
+                        >
                             <span>
-                                <span className="text-1">Mesaj Gönder</span>
-                                <span className="text-2">Mesaj Gönder</span>
+                                <span className="text-1">
+                                    {isSubmitting ? "Gönderiliyor..." : "Mesaj Gönder"}
+                                </span>
+                                <span className="text-2">
+                                    {isSubmitting ? "Gönderiliyor..." : "Mesaj Gönder"}
+                                </span>
                             </span>
                         </button>
                     </div>
