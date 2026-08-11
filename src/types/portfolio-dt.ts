@@ -16,6 +16,7 @@ export interface PortfolioProjectDT {
   customClass?:string;
   type?:string;
   slug?: string;
+  externalUrl?: string;
   filters?:string[];
   overview?: {
     paragraphs: string[];

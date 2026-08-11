@@ -1,14 +1,10 @@
 import TeamCard from "@/components/shared/components/TeamCard";
 import { SmartLink } from "@/components/common";
 import { team_members } from "@/data/team-data";
-import { TeamItemDT } from "@/types";
 
 const AboutUsTeam = () => {
-    // Hakkımızda sayfasında gösterilecek 4 ekip üyesi (belirli sırayla)
-    const aboutUsOrder = [7, 6, 8, 4]; // Volkan Kırtok, Sarp Kaan Keskin, Volkan Sinar, Miray Arda
-    const teamItems = aboutUsOrder
-        .map((id) => team_members.find((m) => m.id === id))
-        .filter((m): m is TeamItemDT => !!m);
+    // Hakkımızda sayfasında gösterilecek 4 ekip üyesi (ekibimiz sayfasındaki ilk 4)
+    const teamItems = team_members.slice(0, 4);
 
     return (
         <div className="px-team-area px-team-inner-ptb pt-130 px-fade-anim">
