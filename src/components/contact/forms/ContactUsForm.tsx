@@ -1,18 +1,13 @@
 "use client";
 import { ContactUsFormValuesDt } from "@/types/contact-dt";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import HCaptcha from "@hcaptcha/react-hcaptcha";
 
 const WEB3FORMS_ACCESS_KEY = "5910d342-a628-4ed1-808a-a59faa9267bb";
-const HCAPTCHA_SITE_KEY = "50b2fe65-b00b-4ea5-b00c-7f5a9ce4d5e0";
 
 const ContactUsForm = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [hcaptchaToken, setHcaptchaToken] = useState<string | null>(null);
-    const hcaptchaRef = useRef<HCaptcha>(null);
-
     const {
         register,
         handleSubmit,
@@ -21,11 +16,6 @@ const ContactUsForm = () => {
     } = useForm<ContactUsFormValuesDt>();
 
     const onSubmit = async (data: ContactUsFormValuesDt) => {
-        if (!hcaptchaToken) {
-            toast.error("Lütfen robot olmadığınızı doğrulayın.");
-            return;
-        }
-
         setIsSubmitting(true);
         try {
             const response = await fetch("https://api.web3forms.com/submit", {
@@ -42,7 +32,7 @@ const ContactUsForm = () => {
                     message: data.message,
                     subject: `Yeni İletişim Formu: ${data.name}`,
                     from_name: "+90 Ventures İletişim",
-                    "h-captcha-response": hcaptchaToken,
+                    botcheck: "",
                 }),
             });
 
@@ -51,8 +41,6 @@ const ContactUsForm = () => {
             if (result.success) {
                 toast.success("Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.");
                 reset();
-                setHcaptchaToken(null);
-                hcaptchaRef.current?.resetCaptcha();
             } else {
                 toast.error(result.message || "Mesaj gönderilemedi. Lütfen tekrar deneyin.");
             }
@@ -65,6 +53,9 @@ const ContactUsForm = () => {
 
     return (
         <form id="contact-form" onSubmit={handleSubmit(onSubmit)}>
+            {/* Honeypot spam protection — invisible to users */}
+            <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
+
             <div className="row">
                 {/* Full Name */}
                 <div className="col-lg-6">
@@ -149,16 +140,6 @@ const ContactUsForm = () => {
                         )}
                     </div>
 
-                    {/* hCaptcha */}
-                    <div className="mb-20">
-                        <HCaptcha
-                            sitekey={HCAPTCHA_SITE_KEY}
-                            onVerify={(token) => setHcaptchaToken(token)}
-                            onExpire={() => setHcaptchaToken(null)}
-                            ref={hcaptchaRef}
-                        />
-                    </div>
-
                     <div className="tp-contact-form-btn">
                         <button
                             className="w-100"
@@ -184,4 +165,3 @@ const ContactUsForm = () => {
 };
 
 export default ContactUsForm;
-

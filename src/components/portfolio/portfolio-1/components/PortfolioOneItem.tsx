@@ -3,15 +3,14 @@ import Image from "next/image";
 
 const PortfolioOneItem: React.FC<PortfolioProjectDT> = ({ type, video, image, title, year, externalUrl }) => {
     const content = (
-        <div className="px-project-item mb-20">
-            <div className="px-project-content d-flex align-items-center justify-content-between">
-                <h4 className="px-project-title" style={{ fontSize: "32px", fontWeight: 700, letterSpacing: "-0.03em" }}>
+        <div className="px-project-3-item mb-55">
+            <div className="px-project-3-content d-flex justify-content-between align-items-center mb-25">
+                <h4 className="px-project-3-title m-0">
                     <span>{title}</span>
                 </h4>
                 {year && <span style={{ fontSize: "16px", fontWeight: 500 }}>/ {year}</span>}
             </div>
-
-            <div className="px-project-thumb">
+            <div className="px-project-3-thumb">
                 {type === "video" ? (
                     <video loop muted autoPlay playsInline style={{ width: "100%", height: "auto" }}>
                         <source src={video} type="video/mp4" />
@@ -19,7 +18,7 @@ const PortfolioOneItem: React.FC<PortfolioProjectDT> = ({ type, video, image, ti
                 ) : (
                     <div className="ripple-image">
                         <Image
-                            style={{ width: "100%", height: "auto" }}
+                            className="img-fluid w-100 h-auto"
                             width={905}
                             height={680}
                             src={image}
@@ -45,4 +44,5 @@ const PortfolioOneItem: React.FC<PortfolioProjectDT> = ({ type, video, image, ti
 };
 
 export default PortfolioOneItem;
+
 
