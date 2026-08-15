@@ -79,13 +79,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://90.ventures",
   },
-  verification: {
-    google: "YOUR_GOOGLE_VERIFICATION_CODE",
-    yandex: "YOUR_YANDEX_VERIFICATION_CODE",
-    other: {
-      "msvalidate.01": "YOUR_BING_VERIFICATION_CODE",
-    },
-  },
   icons: {
     icon: [
       { url: "/favicon.png?v=2", type: "image/png" },
