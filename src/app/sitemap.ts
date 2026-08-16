@@ -1,9 +1,10 @@
 import { MetadataRoute } from 'next';
+import { subServicesData } from '@/data/sub-services-data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://90.ventures';
 
-  return [
+  const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: `${baseUrl}`,
       lastModified: new Date(),
@@ -59,4 +60,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
   ];
+
+  const subServiceRoutes: MetadataRoute.Sitemap = subServicesData.map((service) => ({
+    url: `${baseUrl}/hizmetler/${service.parentSlug}/${service.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.7,
+  }));
+
+  return [...staticRoutes, ...subServiceRoutes];
 }
+
