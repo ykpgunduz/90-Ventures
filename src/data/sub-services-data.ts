@@ -714,7 +714,7 @@ export const subServicesData: SubService[] = [
     {
         parentSlug: "destekleyici-hizmetler",
         parentTitle: "Destekleyici Hizmetler",
-        slug: "yeni-ozellik-gelistirme-ve-entegrasyon",
+        slug: "yeni-ozellik-gelistirme-entegrasyon",
         title: "Yeni Özellik Geliştirme & Entegrasyon",
         metaTitle: "Yeni Özellik Geliştirme & API Entegrasyonu | +90 Ventures",
         subtitle: "Mevcut Ürünlerinizi Yeni Yeteneklerle Güçlendirin",
@@ -823,9 +823,17 @@ export const getSubService = (parentSlug: string, subSlug: string): SubService |
         .replace(/^urun-stratejisi$/, "urun-stratejisi-ve-danismanligi")
         .replace(/^saas-platformu$/, "saas-platformu-gelistirme")
         .replace(/^ozel-yazilim$/, "ozel-yazilim-gelistirme")
-        .replace(/^buyume-danismanligi$/, "uygulama-buyume-danismanligi");
+        .replace(/^buyume-danismanligi$/, "uygulama-buyume-danismanligi")
+        .replace(/^yeni-ozellik-gelistirme-ve-entegrasyon$/, "yeni-ozellik-gelistirme-entegrasyon");
 
-    return subServicesData.find(
-        (item) => (item.parentSlug === parentSlug || !parentSlug) && (item.slug === subSlug || item.slug === normalizedSub)
-    ) || subServicesData.find((item) => item.slug === subSlug || item.slug === normalizedSub);
+    return (
+        subServicesData.find(
+            (item) =>
+                (item.parentSlug === parentSlug || !parentSlug) &&
+                (item.slug === subSlug || item.slug === normalizedSub)
+        ) ||
+        subServicesData.find(
+            (item) => item.slug === subSlug || item.slug === normalizedSub
+        )
+    );
 };

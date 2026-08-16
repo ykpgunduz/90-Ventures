@@ -36,7 +36,7 @@ export const footerColumns = [
     title: "Destekleyici Hizmetler",
     links: [
       { label: "Özel Geliştirme Ekipleri", href: "/hizmetler/destekleyici-hizmetler/ozel-gelistirme-ekipleri" },
-      { label: "Yeni Özellik Entegrasyonu", href: "/hizmetler/destekleyici-hizmetler/yeni-ozellik-gelistirme-ve-entegrasyon" },
+      { label: "Yeni Özellik Entegrasyonu", href: "/hizmetler/destekleyici-hizmetler/yeni-ozellik-gelistirme-entegrasyon" },
       { label: "Bakım & Güvenlik", href: "/hizmetler/destekleyici-hizmetler/uygulama-bakim-destek-ve-guvenlik" },
       { label: "Kod Denetimi & Audit", href: "/hizmetler/destekleyici-hizmetler/kod-inceleme-denetim-ve-optimizasyon" },
     ],
